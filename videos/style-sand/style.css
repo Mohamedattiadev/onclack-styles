@@ -1,0 +1,4 @@
+/* Sand Table style test — the whole picture is one canvas (shared/table.js). Palette tokens: PAL in table.js. */
+#stage { background: #3A2614; }
+#stage .scene { overflow: hidden; }
+#stage .scene canvas { display: block; }

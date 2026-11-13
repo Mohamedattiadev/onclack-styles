@@ -1,0 +1,4 @@
+/* Blueprint style test — palette tokens live in shared/draft.js (C). */
+#stage { background: #173F6E; }
+#stage .scene { overflow: hidden; font-kerning: normal; font-synthesis: none; text-rendering: geometricPrecision; }
+#stage .scene text { font-variant-numeric: tabular-nums lining-nums; }

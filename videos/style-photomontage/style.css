@@ -1,0 +1,5 @@
+/* Photomontage style test — palette tokens live in shared/montage.js (PAL). */
+@font-face { font-family: 'Big Shoulders Display'; font-style: normal; font-weight: 700; font-display: block; src: url('assets/fonts/big-shoulders-display-latin-700-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Big Shoulders Display'; font-style: normal; font-weight: 900; font-display: block; src: url('assets/fonts/big-shoulders-display-latin-900-normal.woff2') format('woff2'); }
+#stage { background: #D3CDBF; }
+#stage .scene { font-kerning: normal; font-synthesis: none; text-rendering: geometricPrecision; -webkit-font-smoothing: antialiased; }

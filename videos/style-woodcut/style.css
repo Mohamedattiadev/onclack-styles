@@ -1,0 +1,3 @@
+/* Woodcut style test — tokens live in shared/wood.js (C). */
+#stage { background: #24201B; }
+#stage .scene { font-kerning: normal; font-synthesis: none; }

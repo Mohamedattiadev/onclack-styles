@@ -1,0 +1,3 @@
+/* Lacquer style test — palette tokens live in shared/lacquer.js (PAL). */
+#stage { background: #0c0d11; }
+#stage .scene { font-kerning: normal; text-rendering: geometricPrecision; -webkit-font-smoothing: antialiased; font-synthesis: none; }

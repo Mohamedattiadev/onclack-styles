@@ -1,0 +1,3 @@
+/* Stamp Album style test — palette in shared/album.js (C). */
+#stage { background: #E3DED0; }
+#stage .scene { font-kerning: normal; font-synthesis: none; text-rendering: geometricPrecision; }

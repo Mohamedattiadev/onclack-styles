@@ -1,0 +1,3 @@
+/* Lace Papercut style test — the teal glass is the stage background. */
+#stage { background: #062226; }
+#stage .scene { font-kerning: normal; text-rendering: geometricPrecision; }

@@ -1,0 +1,6 @@
+/* Pencil Flipbook — palette tokens live in shared/kit.js. Kalam (OFL) is local, see assets/fonts/. */
+@font-face { font-family: 'Kalam'; font-weight: 300; font-display: block; src: url('assets/fonts/kalam-latin-300-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Kalam'; font-weight: 400; font-display: block; src: url('assets/fonts/kalam-latin-400-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Kalam'; font-weight: 700; font-display: block; src: url('assets/fonts/kalam-latin-700-normal.woff2') format('woff2'); }
+#stage { background: #3B3A34; }
+#stage .scene { overflow: hidden; font-kerning: normal; font-synthesis: none; }

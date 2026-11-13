@@ -1,0 +1,5 @@
+Fonts: Newsreader, Instrument Serif, Schibsted Grotesk, Sofia Sans Extra Condensed, IBM Plex Mono, Shantell Sans,
+Bricolage Grotesque, Fraunces — each licensed under the SIL Open Font License 1.1 (https://openfontlicense.org),
+downloaded from Fontsource (https://fontsource.org) on 2026-11-12. OFL allows commercial use, embedding in videos,
+and bundling; the fonts themselves may not be sold on their own. Copyright belongs to the respective authors
+(see each family's page on fonts.google.com / fontsource.org).

@@ -1,0 +1,3 @@
+/* Bent Wire style test — palette tokens live in shared/wire.js (KIND) and shared/world.js. Fonts: Newsreader + IBM Plex Mono (engine). */
+#stage { background: #ECE8E0; }
+#stage .scene { overflow: hidden; font-kerning: normal; font-synthesis: none; }

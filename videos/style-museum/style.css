@@ -1,0 +1,3 @@
+/* Display Case style test — palette tokens live in shared/gallery.js (PAL). */
+#stage { background: #1b1c20; }
+#stage .scene { font-kerning: normal; font-synthesis: none; text-rendering: geometricPrecision; -webkit-font-smoothing: antialiased; }

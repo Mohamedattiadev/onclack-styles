@@ -1,0 +1,5 @@
+/* Typed Dossier style test — palette tokens live in shared/dossier.js (PAL). */
+@font-face { font-family: 'Courier Prime'; font-style: normal; font-weight: 400; font-display: block; src: url('assets/fonts/courier-prime-latin-400-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Courier Prime'; font-style: normal; font-weight: 700; font-display: block; src: url('assets/fonts/courier-prime-latin-700-normal.woff2') format('woff2'); }
+#stage { background: #34322E; }
+#stage .scene { font-kerning: none; font-synthesis: none; text-rendering: geometricPrecision; -webkit-font-smoothing: antialiased; }

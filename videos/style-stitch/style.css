@@ -1,0 +1,3 @@
+/* Stitch style test — palette tokens live in shared/stitch.js (PAL). Everything is drawn on one canvas per piece. */
+#stage { background: #CDBE9E; }
+#stage .scene { overflow: hidden; }

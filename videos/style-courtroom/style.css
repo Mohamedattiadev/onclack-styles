@@ -1,0 +1,4 @@
+/* Reportage Sketch — palette tokens live in shared/sketch.js (PAL). Paper, strokes and notes are all canvas. */
+@font-face { font-family: 'Caveat'; font-weight: 600; font-display: block; src: url('assets/fonts/caveat-latin-600-normal.woff2') format('woff2'); }
+#stage { background: #2B2824; }
+#stage .scene { overflow: hidden; }

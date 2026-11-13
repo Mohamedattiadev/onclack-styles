@@ -1,0 +1,6 @@
+/* Clay Figure Painting style test — palette tokens: clay #C2683A · slip #1B1410 · added white #E8DDC6 · purple-red #7A2630 · backdrop #262C30→#343B40 */
+#stage { background: #2B3135; }
+#stage .scene { font-kerning: normal; text-rendering: geometricPrecision; -webkit-font-smoothing: antialiased; font-synthesis: none; }
+.vase-label { position: absolute; background: #E9E3D7; color: #1E1915; padding: 0.42em 0.62em 0.46em; box-shadow: 0 2px 3px rgba(10, 10, 12, 0.45), 0 14px 30px rgba(10, 10, 12, 0.25); }
+.vase-label-a { font-family: 'Instrument Serif', serif; font-size: 1em; line-height: 1.08; letter-spacing: -0.005em; white-space: nowrap; }
+.vase-label-b { font-family: 'IBM Plex Mono', monospace; font-weight: 500; font-size: 0.56em; line-height: 1.3; margin-top: 0.32em; color: #4A3F37; letter-spacing: 0.01em; white-space: nowrap; font-variant-numeric: tabular-nums lining-nums; }

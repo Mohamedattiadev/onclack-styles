@@ -1,0 +1,3 @@
+/* Wood Inlay style test — palette = wood species in shared/inlay.js (SPECIES). */
+#stage { background: #2B1D13; }
+#stage .scene { overflow: hidden; font-kerning: normal; font-synthesis: none; text-rendering: geometricPrecision; }

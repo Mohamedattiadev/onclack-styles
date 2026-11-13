@@ -1,0 +1,437 @@
+[
+ {
+  "word": "October",
+  "start": 0.58,
+  "end": 1.1,
+  "para": 0,
+  "sentence": 0
+ },
+ {
+  "word": "twenty-seventh,",
+  "start": 1.1,
+  "end": 1.72,
+  "para": 0,
+  "sentence": 0
+ },
+ {
+  "word": "nineteen",
+  "start": 2.07,
+  "end": 2.61,
+  "para": 0,
+  "sentence": 0
+ },
+ {
+  "word": "sixty-two.",
+  "start": 2.61,
+  "end": 3.25,
+  "para": 0,
+  "sentence": 0
+ },
+ {
+  "word": "A",
+  "start": 3.62,
+  "end": 3.79,
+  "para": 0,
+  "sentence": 1
+ },
+ {
+  "word": "Soviet",
+  "start": 3.79,
+  "end": 4.3,
+  "para": 0,
+  "sentence": 1
+ },
+ {
+  "word": "submarine",
+  "start": 4.3,
+  "end": 4.93,
+  "para": 0,
+  "sentence": 1
+ },
+ {
+  "word": "hides",
+  "start": 4.93,
+  "end": 5.32,
+  "para": 0,
+  "sentence": 1
+ },
+ {
+  "word": "deep",
+  "start": 5.42,
+  "end": 5.72,
+  "para": 0,
+  "sentence": 1
+ },
+ {
+  "word": "in",
+  "start": 5.72,
+  "end": 5.82,
+  "para": 0,
+  "sentence": 1
+ },
+ {
+  "word": "the",
+  "start": 5.82,
+  "end": 5.98,
+  "para": 0,
+  "sentence": 1
+ },
+ {
+  "word": "sea",
+  "start": 5.98,
+  "end": 6.24,
+  "para": 0,
+  "sentence": 1
+ },
+ {
+  "word": "near",
+  "start": 6.24,
+  "end": 6.4,
+  "para": 0,
+  "sentence": 1
+ },
+ {
+  "word": "Cuba.",
+  "start": 6.52,
+  "end": 6.83,
+  "para": 0,
+  "sentence": 1
+ },
+ {
+  "word": "Above",
+  "start": 7.559,
+  "end": 7.889,
+  "para": 1,
+  "sentence": 0,
+  "mood": "tense"
+ },
+ {
+  "word": "it,",
+  "start": 7.889,
+  "end": 8.069,
+  "para": 1,
+  "sentence": 0,
+  "mood": "tense"
+ },
+ {
+  "word": "American",
+  "start": 8.069,
+  "end": 8.629,
+  "para": 1,
+  "sentence": 0,
+  "mood": "tense"
+ },
+ {
+  "word": "ships",
+  "start": 8.629,
+  "end": 8.949,
+  "para": 1,
+  "sentence": 0,
+  "mood": "tense"
+ },
+ {
+  "word": "drop",
+  "start": 8.949,
+  "end": 9.279,
+  "para": 1,
+  "sentence": 0,
+  "mood": "tense"
+ },
+ {
+  "word": "practice",
+  "start": 9.279,
+  "end": 9.789,
+  "para": 1,
+  "sentence": 0,
+  "mood": "tense"
+ },
+ {
+  "word": "depth",
+  "start": 9.789,
+  "end": 10.049,
+  "para": 1,
+  "sentence": 0,
+  "mood": "tense"
+ },
+ {
+  "word": "charges.",
+  "start": 10.049,
+  "end": 10.569,
+  "para": 1,
+  "sentence": 0,
+  "mood": "tense"
+ },
+ {
+  "word": "Moscow",
+  "start": 10.949,
+  "end": 11.469,
+  "para": 1,
+  "sentence": 1,
+  "mood": "tense"
+ },
+ {
+  "word": "has",
+  "start": 11.469,
+  "end": 11.659,
+  "para": 1,
+  "sentence": 1,
+  "mood": "tense"
+ },
+ {
+  "word": "been",
+  "start": 11.659,
+  "end": 11.929,
+  "para": 1,
+  "sentence": 1,
+  "mood": "tense"
+ },
+ {
+  "word": "silent",
+  "start": 11.929,
+  "end": 12.259,
+  "para": 1,
+  "sentence": 1,
+  "mood": "tense"
+ },
+ {
+  "word": "for",
+  "start": 12.349,
+  "end": 12.489,
+  "para": 1,
+  "sentence": 1,
+  "mood": "tense"
+ },
+ {
+  "word": "days.",
+  "start": 12.489,
+  "end": 12.909,
+  "para": 1,
+  "sentence": 1,
+  "mood": "tense"
+ },
+ {
+  "word": "On",
+  "start": 13.673,
+  "end": 13.833,
+  "para": 2,
+  "sentence": 0,
+  "mood": "tense"
+ },
+ {
+  "word": "board:",
+  "start": 13.833,
+  "end": 14.183,
+  "para": 2,
+  "sentence": 0,
+  "mood": "tense"
+ },
+ {
+  "word": "a",
+  "start": 14.183,
+  "end": 14.483,
+  "para": 2,
+  "sentence": 0,
+  "mood": "tense"
+ },
+ {
+  "word": "nuclear",
+  "start": 14.483,
+  "end": 14.883,
+  "para": 2,
+  "sentence": 0,
+  "mood": "tense"
+ },
+ {
+  "word": "torpedo.",
+  "start": 14.883,
+  "end": 15.443,
+  "para": 2,
+  "sentence": 0,
+  "mood": "tense"
+ },
+ {
+  "word": "To",
+  "start": 15.733,
+  "end": 15.803,
+  "para": 2,
+  "sentence": 1,
+  "mood": "tense"
+ },
+ {
+  "word": "fire",
+  "start": 15.903,
+  "end": 16.263,
+  "para": 2,
+  "sentence": 1,
+  "mood": "tense"
+ },
+ {
+  "word": "it,",
+  "start": 16.263,
+  "end": 16.353,
+  "para": 2,
+  "sentence": 1,
+  "mood": "tense"
+ },
+ {
+  "word": "three",
+  "start": 16.513,
+  "end": 16.863,
+  "para": 2,
+  "sentence": 1,
+  "mood": "tense"
+ },
+ {
+  "word": "officers",
+  "start": 16.863,
+  "end": 17.373,
+  "para": 2,
+  "sentence": 1,
+  "mood": "tense"
+ },
+ {
+  "word": "must",
+  "start": 17.373,
+  "end": 17.613,
+  "para": 2,
+  "sentence": 1,
+  "mood": "tense"
+ },
+ {
+  "word": "agree.",
+  "start": 17.613,
+  "end": 17.943,
+  "para": 2,
+  "sentence": 1,
+  "mood": "tense"
+ },
+ {
+  "word": "Two",
+  "start": 18.293,
+  "end": 18.553,
+  "para": 2,
+  "sentence": 2,
+  "mood": "tense"
+ },
+ {
+  "word": "say",
+  "start": 18.553,
+  "end": 18.803,
+  "para": 2,
+  "sentence": 2,
+  "mood": "tense"
+ },
+ {
+  "word": "yes.",
+  "start": 18.803,
+  "end": 19.143,
+  "para": 2,
+  "sentence": 2,
+  "mood": "tense"
+ },
+ {
+  "word": "The",
+  "start": 20.09,
+  "end": 20.17,
+  "para": 3,
+  "sentence": 0,
+  "mood": "reveal"
+ },
+ {
+  "word": "third,",
+  "start": 20.25,
+  "end": 20.61,
+  "para": 3,
+  "sentence": 0,
+  "mood": "reveal"
+ },
+ {
+  "word": "Vasili",
+  "start": 20.61,
+  "end": 21.12,
+  "para": 3,
+  "sentence": 0,
+  "mood": "reveal"
+ },
+ {
+  "word": "Arkhipov,",
+  "start": 21.12,
+  "end": 21.69,
+  "para": 3,
+  "sentence": 0,
+  "mood": "reveal"
+ },
+ {
+  "word": "says",
+  "start": 21.69,
+  "end": 22.03,
+  "para": 3,
+  "sentence": 0,
+  "mood": "reveal"
+ },
+ {
+  "word": "no.",
+  "start": 22.03,
+  "end": 22.18,
+  "para": 3,
+  "sentence": 0,
+  "mood": "reveal",
+  "emph": true
+ },
+ {
+  "word": "The",
+  "start": 22.961,
+  "end": 23.071,
+  "para": 3,
+  "sentence": 1
+ },
+ {
+  "word": "world",
+  "start": 23.071,
+  "end": 23.361,
+  "para": 3,
+  "sentence": 1
+ },
+ {
+  "word": "learned",
+  "start": 23.361,
+  "end": 23.561,
+  "para": 3,
+  "sentence": 1
+ },
+ {
+  "word": "his",
+  "start": 23.561,
+  "end": 23.731,
+  "para": 3,
+  "sentence": 1
+ },
+ {
+  "word": "name",
+  "start": 23.731,
+  "end": 23.961,
+  "para": 3,
+  "sentence": 1
+ },
+ {
+  "word": "forty",
+  "start": 24.131,
+  "end": 24.461,
+  "para": 3,
+  "sentence": 1
+ },
+ {
+  "word": "years",
+  "start": 24.461,
+  "end": 24.731,
+  "para": 3,
+  "sentence": 1
+ },
+ {
+  "word": "later.",
+  "start": 24.731,
+  "end": 24.981,
+  "para": 3,
+  "sentence": 1
+ }
+]

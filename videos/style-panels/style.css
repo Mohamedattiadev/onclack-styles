@@ -1,0 +1,3 @@
+/* Ink Panels style test — palette tokens live in shared/ink.js (PAL). */
+#stage { background: #F2EEE4; }
+#stage .scene { overflow: hidden; }

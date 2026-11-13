@@ -1,0 +1,6 @@
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #000; overflow: hidden; }
+#stage { position: relative; overflow: hidden; background: #000; transform-origin: 0 0; }
+.scene { position: absolute; inset: 0; overflow: hidden; }
+/* No CSS animations or transitions: everything must come from seek(t). */
+#stage *, #stage *::before, #stage *::after { animation: none !important; transition: none !important; }

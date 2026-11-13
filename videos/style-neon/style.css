@@ -1,0 +1,3 @@
+/* Neon Tubes style test — palette tokens live in shared/neon.js (GAS, HW). */
+#stage { background: #120e0d; }
+#stage .scene { overflow: hidden; }

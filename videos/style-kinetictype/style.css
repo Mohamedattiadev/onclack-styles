@@ -1,0 +1,18 @@
+/* KINETIC TYPE style test — "the words are the picture".
+   Display: Bricolage Grotesque (variable: wght 200–800, wdth 75–100), OFL — assets/fonts/LICENSE-BricolageGrotesque-OFL.txt
+   Labels:  IBM Plex Mono (engine/fonts). Two families only. Palette tokens live in shared/kt.js (paper, ink, signal). */
+@font-face {
+  font-family: 'KT Bricolage';
+  font-style: normal;
+  font-display: block;
+  font-weight: 200 800;
+  font-stretch: 75% 100%;
+  src: url('assets/fonts/bricolage-grotesque-latin-standard-normal.woff2') format('woff2-variations');
+}
+#stage { background: #ECE8DF; }
+#stage .scene {
+  font-kerning: normal;
+  font-synthesis: none;
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+}

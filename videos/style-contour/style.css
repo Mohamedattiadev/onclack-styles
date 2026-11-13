@@ -1,0 +1,64 @@
+/* CONTOUR — bone / ink / cobalt (side A) / signal orange (side B, marks only) / contour grey (lines only) */
+#stage { font-kerning: normal; font-synthesis: none; color: #1C1E22; }
+#stage .lbl, #stage .depth, #stage .tick { position: absolute; left: 0; top: 0; white-space: nowrap; will-change: transform; }
+
+/* halo = bone stroke painted under the glyphs, so labels sit cleanly on contour lines */
+#stage .lbl, #stage .depth, #stage .tick { -webkit-text-stroke: 0; paint-order: stroke fill; text-shadow:
+  0 0 calc(var(--u) * 3) #E8E4D8, 0 0 calc(var(--u) * 3) #E8E4D8, 0 0 calc(var(--u) * 2) #E8E4D8; }
+
+.place { font-family: 'Schibsted Grotesk', sans-serif; font-weight: 600; font-size: calc(var(--u) * 34); letter-spacing: 0.16em; color: #1C1E22; }
+.place.big { font-weight: 800; font-size: calc(var(--u) * 50); letter-spacing: 0.2em; }
+.sea { font-family: 'Schibsted Grotesk', sans-serif; font-weight: 400; font-size: calc(var(--u) * 32); letter-spacing: 0.06em; color: #6f6a5e; text-align: center; line-height: 1.1; }
+.city { font-family: 'Schibsted Grotesk', sans-serif; font-weight: 600; font-size: calc(var(--u) * 34); color: #1C1E22; }
+.strongcity { font-size: calc(var(--u) * 40); }
+.mono-inline { font-family: 'IBM Plex Mono', monospace; font-weight: 500; font-size: 0.82em; font-variant-numeric: tabular-nums; margin-left: 0.4em; }
+
+.mark { font-family: 'Schibsted Grotesk', sans-serif; font-size: calc(var(--u) * 46); line-height: 1; display: flex; align-items: baseline; gap: calc(var(--u) * 12); }
+.mark b { font-weight: 800; letter-spacing: -0.01em; }
+.mark .sub { font-weight: 400; font-size: calc(var(--u) * 32); color: #1C1E22; }
+.key { display: inline-block; width: calc(var(--u) * 18); height: calc(var(--u) * 18); align-self: center; }
+.key.orange { background: #D9541A; }
+.key.blue { background: #1F3FAF; }
+
+.mono { font-family: 'IBM Plex Mono', monospace; font-weight: 400; font-size: calc(var(--u) * 30); font-variant-numeric: tabular-nums lining-nums; color: #1C1E22; }
+.mono.strong { font-weight: 500; }
+.mono .approx { color: #6f6a5e; }
+.mono.pill { background: #E8E4D8; padding: calc(var(--u) * 4) calc(var(--u) * 12); border: calc(var(--u) * 1.5) solid #1C1E22; text-shadow: none; }
+
+.depth { font-family: 'IBM Plex Mono', monospace; font-weight: 400; font-size: calc(var(--u) * 24); color: #7d7768; font-variant-numeric: tabular-nums; transform-origin: 50% 50%; }
+.tick { font-family: 'IBM Plex Mono', monospace; font-size: calc(var(--u) * 22); color: #6f6a5e; font-variant-numeric: tabular-nums; }
+.tick.scale { font-size: calc(var(--u) * 26); color: #1C1E22; }
+.secend { font-family: 'Schibsted Grotesk', sans-serif; font-weight: 800; font-size: calc(var(--u) * 30); background: #1C1E22; color: #E8E4D8;
+  width: calc(var(--u) * 48); height: calc(var(--u) * 48); border-radius: 50%; display: flex; align-items: center; justify-content: center; text-shadow: none; }
+
+/* ---------- overlays (dateline, gauge, section card, vote panel) ---------- */
+.ov { position: absolute; left: 0; top: 0; }
+.kicker { font-family: 'Schibsted Grotesk', sans-serif; font-weight: 600; font-size: calc(var(--u) * 28); letter-spacing: 0.16em; text-transform: uppercase; color: #1C1E22; white-space: nowrap; }
+.kicker .dim { color: #6f6a5e; }
+.dateline { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: calc(var(--u) * 122); line-height: 0.92; letter-spacing: -0.02em; color: #1C1E22; white-space: nowrap; }
+.dateline .w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: 0.08em; }
+.dateline .w > span { display: inline-block; }
+.dateline .num { font-variant-numeric: tabular-nums lining-nums; }
+.monoline { font-family: 'IBM Plex Mono', monospace; font-weight: 400; font-size: calc(var(--u) * 30); font-variant-numeric: tabular-nums lining-nums; color: #1C1E22; white-space: nowrap; }
+.monoline .dim { color: #6f6a5e; }
+.runhead { font-family: 'IBM Plex Mono', monospace; font-weight: 500; font-size: calc(var(--u) * 30); font-variant-numeric: tabular-nums lining-nums; color: #1C1E22; white-space: nowrap; display: flex; gap: 0.5em; align-items: baseline; }
+.runhead .digit { display: inline-block; height: 1.2em; overflow: hidden; vertical-align: top; }
+.runhead .digit > span > span { display: block; line-height: 1.2em; height: 1.2em; }
+.runhead .digit > span { display: block; }
+.gauge-lbl { font-family: 'IBM Plex Mono', monospace; font-size: calc(var(--u) * 24); color: #6f6a5e; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.gauge-val { font-family: 'IBM Plex Mono', monospace; font-weight: 500; font-size: calc(var(--u) * 40); color: #1C1E22; font-variant-numeric: tabular-nums lining-nums; white-space: nowrap; }
+.card-title { font-family: 'Schibsted Grotesk', sans-serif; font-weight: 600; font-size: calc(var(--u) * 32); color: #1C1E22; white-space: nowrap; }
+.card-title b { font-weight: 800; }
+.card-note { font-family: 'IBM Plex Mono', monospace; font-size: calc(var(--u) * 24); color: #6f6a5e; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.card-big { font-family: 'IBM Plex Mono', monospace; font-weight: 500; font-size: calc(var(--u) * 34); color: #1C1E22; font-variant-numeric: tabular-nums lining-nums; white-space: nowrap; background: #F2EFE6; padding: 0 calc(var(--u) * 8); }
+.vote-h { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: calc(var(--u) * 78); line-height: 1; letter-spacing: -0.015em; color: #1C1E22; white-space: nowrap; }
+.vote-sub { font-family: 'IBM Plex Mono', monospace; font-size: calc(var(--u) * 28); color: #1C1E22; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.vote-sub .dim { color: #6f6a5e; }
+.who { font-family: 'Schibsted Grotesk', sans-serif; font-weight: 600; font-size: calc(var(--u) * 32); color: #1C1E22; white-space: nowrap; text-align: center; }
+.role { font-family: 'IBM Plex Mono', monospace; font-size: calc(var(--u) * 22); color: #6f6a5e; white-space: nowrap; text-align: center; }
+.initials { font-family: 'Schibsted Grotesk', sans-serif; font-weight: 800; font-size: calc(var(--u) * 40); letter-spacing: 0.04em; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
+.verdict { font-family: 'IBM Plex Mono', monospace; font-weight: 500; font-size: calc(var(--u) * 26); letter-spacing: 0.08em; white-space: nowrap; text-align: center; }
+.tally { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: calc(var(--u) * 98); line-height: 1; color: #1C1E22; font-variant-numeric: tabular-nums lining-nums; white-space: nowrap; }
+.tally .dim { color: #6f6a5e; }
+.no-word { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: calc(var(--u) * 152); line-height: 0.9; letter-spacing: -0.02em; color: #1C1E22; white-space: nowrap; }
+.pname { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: calc(var(--u) * 62); line-height: 1; letter-spacing: -0.01em; color: #1C1E22; white-space: nowrap; }

@@ -1,0 +1,3 @@
+/* Lantern Slide style test — palette tokens live in shared/lantern.js. */
+#stage { background: #0E0C0A; }
+#stage .scene { font-kerning: normal; text-rendering: geometricPrecision; -webkit-font-smoothing: antialiased; }

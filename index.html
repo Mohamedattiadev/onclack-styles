@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Style Tests Watch</title>
+<style>
+:root{--bg:#121211;--card:#1e1d1b;--fg:#efece4;--mut:#a39d92;--ac:#d97757;--line:#2e2c29}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 system-ui,sans-serif}
+main{max-width:1400px;margin:0 auto;padding:20px 16px 64px}
+h1{margin:0 0 4px;font-size:24px}.lead{color:var(--mut);margin:0 0 16px}
+.player{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:16px;background:var(--card);border-radius:14px;padding:14px}
+.screen{position:relative;background:#000;border-radius:8px;overflow:hidden;width:100%}
+.screen.yt{aspect-ratio:16/9}.screen.sh{aspect-ratio:9/16;max-height:72vh;width:auto;margin:0 auto}
+.screen iframe{position:absolute;left:0;top:0;border:0;transform-origin:0 0;pointer-events:none}
+.screen .hint{position:absolute;inset:0;display:grid;place-items:center;color:var(--mut)}
+.side h2{margin:0 0 2px;font-size:20px}.side p{margin:0 0 10px;color:var(--mut)}
+.ctrl{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+button{background:#2b2a27;color:var(--fg);border:1px solid var(--line);border-radius:99px;padding:7px 14px;font:inherit;cursor:pointer}
+button.on,button.play{background:var(--ac);color:#111;border-color:var(--ac);font-weight:600}
+input[type=range]{width:100%}.time{font-variant-numeric:tabular-nums;color:var(--mut)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px;margin-top:20px}
+.card{background:var(--card);border-radius:12px;padding:12px;border:2px solid transparent}.card.cur{border-color:var(--ac)}
+.card h3{margin:0;font-size:16px;display:flex;gap:8px;align-items:center}.num{width:26px;height:26px;border-radius:50%;background:var(--ac);color:#111;display:grid;place-items:center;font-size:13px;flex:none}
+.card p{margin:4px 0 8px;color:var(--mut);font-size:13px}
+.thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}.thumbs img{width:100%;border-radius:4px;display:block;cursor:pointer}
+.missing{color:var(--mut);font-size:13px;padding:20px 0}
+@media(max-width:800px){.player{grid-template-columns:1fr;position:static}}
+</style></head><body><main>
+<h1>Watch all styles — live, with sound</h1>
+<p class="lead">Dynamic: press ▶ on a style, it plays live from the engine (no render) with voice + sounds. Static: the 4 stills under each card (click one to jump there). Space = play/pause.</p>
+<section class="player">
+  <div><div class="screen yt" id="screen"><div class="hint">Choose a style below ▼</div></div></div>
+  <div class="side">
+    <h2 id="title">—</h2><p id="desc"></p>
+    <div class="ctrl"><button class="play" id="play">▶ Play</button><button id="restart">⟲ Start</button></div>
+    <div class="ctrl"><button class="on" data-f="youtube">16:9 YouTube</button><button data-f="shorts">9:16 Shorts</button></div>
+    <input type="range" id="seek" min="0" max="26" step="0.01" value="0"><div class="time" id="time">0.0 / 0.0 s</div>
+    <div class="ctrl"><button id="prev">◀ Prev style</button><button id="next">Next style ▶</button></div>
+    <p style="font-size:13px">Tip: tell me numbers, e.g. "approve 3, 8, 10 · reject 5".</p>
+  </div>
+</section>
+<section class="grid" id="grid"></section>
+</main>
+<script type="module">
+import { duckGain } from '/onclack-styles/engine/lib/duck.js';
+const STYLES = [{"slug":"style-footnote","name":"Footnote","desc":"Editorial book page, custom red ✱, the \"footnote dive\", pencil notes on real evidence","yt":["yt-03.jpg","yt-09.jpg","yt-15.jpg","yt-22.jpg"],"sh":["sh-03.jpg","sh-09.jpg","sh-15.jpg","sh-22.jpg"],"mix":true},{"slug":"style-broadsheet","name":"Broadsheet","desc":"Front-page grid, halftone made in code, one red spot ink, \"the press\"","yt":["yt-03.jpg","yt-09.jpg","yt-15.jpg","yt-19.jpg","yt-25.jpg"],"sh":["sh-03.jpg","sh-09.jpg","sh-15.jpg","sh-19.jpg","sh-25.jpg"],"mix":true},{"slug":"style-shadowplay","name":"Shadowplay","desc":"Silhouettes on bold colour fields, paper-cut edges, \"the puppet beat\"","yt":["yt-03.jpg","yt-09.jpg","yt-15.jpg","yt-19.jpg"],"sh":["sh-03.jpg","sh-09.jpg","sh-15.jpg","sh-19.jpg"],"mix":true},{"slug":"style-contour","name":"Contour","desc":"Bathymetry contour maps, blue vs orange, \"the survey glide\"","yt":["yt-03.jpg","yt-09.jpg","yt-15.jpg","yt-19.jpg","yt-22.jpg"],"sh":["sh-03.jpg","sh-09.jpg","sh-15.jpg","sh-19.jpg","sh-22.jpg"],"mix":true},{"slug":"style-painted","name":"Painted","desc":"Hand-painted watercolour + ink look, 12 fps boil, original figures","yt":["yt-03.jpg","yt-09.jpg","yt-15.jpg","yt-19.jpg","yt-22.jpg"],"sh":["sh-03.jpg","sh-09.jpg","sh-15.jpg","sh-19.jpg","sh-22.jpg"],"mix":true},{"slug":"style-diorama","name":"Diorama","desc":"2.5D paper-craft miniature, one key light, real shadows, slow dollies","yt":["yt-03.jpg","yt-09.jpg","yt-15.jpg","yt-22.jpg"],"sh":["sh-03.jpg","sh-09.jpg","sh-15.jpg","sh-22.jpg"],"mix":true},{"slug":"style-periodlens","name":"Period Lens","desc":"The story drawn in the print language of its own time (1962 pamphlet → screenprint)","yt":["yt-03.jpg","yt-09.jpg","yt-15.jpg","yt-22.jpg"],"sh":["sh-03.jpg","sh-09.jpg","sh-15.jpg","sh-22.jpg"],"mix":true},{"slug":"style-blueprint","name":"Blueprint","desc":"One cyanotype engineering sheet, lines drafted live, red-pencil NO","yt":["yt-03.jpg","yt-09.jpg","yt-15.jpg","yt-22.jpg"],"sh":["sh-03.jpg","sh-09.jpg","sh-15.jpg","sh-22.jpg"],"mix":true},{"slug":"style-kinetictype","name":"Kinetic Type","desc":"No pictures: big designed type that acts out the words","yt":["yt-03.jpg","yt-09.jpg","yt-15.jpg","yt-19-vote.jpg","yt-22.jpg","yt-25-end.jpg"],"sh":["sh-03.jpg","sh-09.jpg","sh-10-impact.jpg","sh-15.jpg","sh-22.jpg"],"mix":true},{"slug":"style-riso","name":"Riso Zine","desc":"Two-ink risograph zine, misregistered passes, hand-cut NO","yt":["yt-03.jpg","yt-09.jpg","yt-15.jpg","yt-22.jpg"],"sh":["sh-03.jpg","sh-09.jpg","sh-15.jpg","sh-22.jpg"],"mix":true},{"slug":"style-lighttable","name":"Light Table","desc":"Negatives and contact sheets under a loupe, grease pencil","yt":["yt-03.jpg","yt-09.jpg","yt-15.jpg","yt-22.jpg"],"sh":["sh-03.jpg","sh-09.jpg","sh-15.jpg","sh-22.jpg"],"mix":true},{"slug":"style-mosaic","name":"Mosaic","desc":"Stone tesserae that follow the shapes, tiles re-lay","yt":["yt-03.jpg","yt-09.jpg","yt-15.jpg","yt-22.jpg"],"sh":["sh-03.jpg","sh-09.jpg","sh-15.jpg","sh-22.jpg"],"mix":true},{"slug":"style-inkwash","name":"Ink Wash","desc":"Few brush strokes on rice paper, one red seal","yt":["yt-03.jpg","yt-09.jpg","yt-15.jpg","yt-22.jpg"],"sh":["sh-03.jpg","sh-09.jpg","sh-15.jpg","sh-22.jpg"],"mix":true},{"slug":"style-instruments","name":"Instruments","desc":"Analog 1960s dials and switches tell the story","yt":["yt-03.jpg","yt-09.jpg","yt-15.jpg","yt-22.jpg"],"sh":["sh-03.jpg","sh-09.jpg","sh-15.jpg","sh-22.jpg"],"mix":true},{"slug":"style-stitch","name":"Stitch","desc":"Embroidery on linen, thread stitched along the lines","yt":["yt-03.jpg","yt-09.jpg","yt-15.jpg","yt-22.jpg"],"sh":["sh-03.jpg","sh-09.jpg","sh-15.jpg","sh-22.jpg"],"mix":true},{"slug":"style-lantern","name":"Lantern Slide","desc":"Hand-tinted glass slides projected in a dark hall","yt":["yt-03.jpg","yt-09.jpg","yt-15.jpg","yt-22.jpg"],"sh":["sh-03.jpg","sh-09.jpg","sh-15.jpg","sh-22.jpg"],"mix":true},{"slug":"style-panels","name":"Ink Panels","desc":"Graphic-novel page, panels snap in, grid breaks on the NO","yt":["yt-03.jpg","yt-09.jpg","yt-15.jpg","yt-22.jpg"],"sh":["sh-03.jpg","sh-09.jpg","sh-15.jpg","sh-22.jpg"],"mix":true},{"slug":"style-sand","name":"Sand Table","desc":"Backlit sand drawn and wiped by hand, one wipe-morph to the next","yt":["yt-03.jpg","yt-09.jpg","yt-15.jpg","yt-22.jpg"],"sh":["sh-03.jpg","sh-09.jpg","sh-15.jpg","sh-22.jpg"],"mix":true},{"slug":"style-courtroom","name":"Reportage Sketch","desc":"Pastel and charcoal drawn live on toned paper, sheets flip","yt":["yt-03.jpg","yt-09.jpg","yt-15.jpg","yt-22.jpg"],"sh":["sh-03.jpg","sh-09.jpg","sh-15.jpg","sh-22.jpg"],"mix":true},{"slug":"style-engraving","name":"Banknote Engraving","desc":"Security-print line engraving, guilloche, serials, punched red NO","yt":["yt-03.jpg","yt-09.jpg","yt-15.jpg","yt-22.jpg"],"sh":["sh-03.jpg","sh-09.jpg","sh-15.jpg","sh-22.jpg"],"mix":true},{"slug":"style-vase","name":"Clay Figure Painting","desc":"Black-figure frieze round a turning clay pot, one purple-red NO","yt":["yt-03.jpg","yt-09.jpg","yt-15.jpg","yt-22.jpg"],"sh":["sh-03.jpg","sh-09.jpg","sh-15.jpg","sh-22.jpg"],"mix":true},{"slug":"style-origami","name":"Folded Paper","desc":"Real 3D folds on a wood table, scored creases, red octagon NO","yt":["yt-03.jpg","yt-09.jpg","yt-15.jpg","yt-22.jpg"],"sh":["sh-03.jpg","sh-09.jpg","sh-15.jpg","sh-22.jpg"],"mix":true},{"slug":"style-woodcut","name":"Woodcut","desc":"Gouge cuts carved live in a black block, then the print is pulled","yt":["yt-03.jpg","yt-09.jpg","yt-15.jpg","yt-22.jpg"],"sh":["sh-03.jpg","sh-09.jpg","sh-15.jpg","sh-22.jpg"],"mix":true},{"slug":"style-scratchboard","name":"Scratchboard","desc":"White lines knifed out of black board, cyan sea, red gouge NO","yt":["yt-03.jpg","yt-09.jpg","yt-15.jpg","yt-22.jpg"],"sh":["sh-03.jpg","sh-09.jpg","sh-15.jpg","sh-22.jpg"],"mix":true},{"slug":"style-sketchbook","name":"Field Sketchbook","desc":"Pen line then watercolour wash in a travel journal, taped-in evidence","yt":["yt-03.jpg","yt-09.jpg","yt-15.jpg","yt-22.jpg"],"sh":["sh-03.jpg","sh-09.jpg","sh-15.jpg","sh-22.jpg"],"mix":true},{"slug":"style-chalkboard","name":"Lecture Chalkboard","desc":"Chalk diagrams on slate, eraser wipes leave ghosts, pink NO","yt":["yt-03.jpg","yt-09.jpg","yt-15.jpg","yt-22.jpg"],"sh":["sh-03.jpg","sh-09.jpg","sh-15.jpg","sh-22.jpg"],"mix":true},{"slug":"style-museum","name":"Display Case","desc":"Dark gallery, glass vitrines, spotlight clicks on each exhibit","yt":["yt-03.jpg","yt-09.jpg","yt-15.jpg","yt-22.jpg"],"sh":["sh-03.jpg","sh-09.jpg","sh-15.jpg","sh-22.jpg"],"mix":true},{"slug":"style-stainedglass","name":"Leaded Glass","desc":"One leaded window, panes light up on their word, ruby NO","yt":["yt-03.jpg","yt-09.jpg","yt-15.jpg","yt-22.jpg"],"sh":["sh-03.jpg","sh-09.jpg","sh-15.jpg","sh-22.jpg"],"mix":true},{"slug":"style-teletype","name":"Teletype Tape","desc":"Wire-room teleprinter roll and punched tape, NO in holes of light","yt":["yt-03.jpg","yt-09.jpg","yt-15.jpg","yt-22.jpg"],"sh":["sh-03.jpg","sh-09.jpg","sh-15.jpg","sh-22.jpg"],"mix":true},{"slug":"style-stencil","name":"Spray Stencil","desc":"Hand-cut stencils sprayed on concrete: lay, hiss, lift","yt":["yt-03.jpg","yt-09.jpg","yt-15.jpg","yt-22.jpg"],"sh":["sh-03.jpg","sh-09.jpg","sh-15.jpg","sh-22.jpg"],"mix":true},{"slug":"style-claymation","name":"Clay","desc":"Plasticine set at 12 fps, boiling outlines, squash-and-stretch NO","yt":["yt-03.jpg","yt-09.jpg","yt-15.jpg","yt-22.jpg"],"sh":["sh-03.jpg","sh-09.jpg","sh-15.jpg","sh-22.jpg"],"mix":true},{"slug":"style-dossier","name":"Typed Dossier","desc":"Onion-skin report typed live, carbon copies, tape peels, red ribbon NO","yt":["yt-03.jpg","yt-09.jpg","yt-15.jpg","yt-22.jpg"],"sh":["sh-03.jpg","sh-09.jpg","sh-15.jpg","sh-22.jpg"],"mix":true},{"slug":"style-marquetry","name":"Wood Inlay","desc":"Veneers knife-cut and fitted flush, grain draws forms, indigo NO","yt":["yt-03.jpg","yt-09.jpg","yt-15.jpg","yt-22.jpg"],"sh":["sh-03.jpg","sh-09.jpg","sh-15.jpg","sh-22.jpg"],"mix":true},{"slug":"style-lacquer","name":"Lacquer & Gold Dust","desc":"Gold powder settles on wet lacquer, NO polished out in vermilion","yt":["yt-03.jpg","yt-09.jpg","yt-15.jpg","yt-22.jpg"],"sh":["sh-03.jpg","sh-09.jpg","sh-15.jpg","sh-22.jpg"],"mix":true},{"slug":"style-flipbook","name":"Pencil Flipbook","desc":"Rough animator pencil on 3s, corner flutters, red-pencil NO stops the book","yt":["yt-03.jpg","yt-09.jpg","yt-15.jpg","yt-22.jpg"],"sh":["sh-03.jpg","sh-09.jpg","sh-15.jpg","sh-22.jpg"],"mix":true},{"slug":"style-emboss","name":"Blind Emboss","desc":"White-on-white relief revealed by a moving raking lamp, one inked NO","yt":["yt-03.jpg","yt-09.jpg","yt-15.jpg","yt-22.jpg"],"sh":["sh-03.jpg","sh-09.jpg","sh-15.jpg","sh-22.jpg"],"mix":true},{"slug":"style-stamps","name":"Stamp Album","desc":"Own-design stamps on album leaves: postmarks strike, loupe, red NO overprint","yt":["yt-03.jpg","yt-09.jpg","yt-15.jpg","yt-22.jpg"],"sh":["sh-03.jpg","sh-09.jpg","sh-15.jpg","sh-22.jpg"],"mix":true},{"slug":"style-vector","name":"Vector CRT","desc":"One green beam draws every line on a 1960s vector screen, persistence trails, brightest NO","yt":["yt-03.jpg","yt-09.jpg","yt-15.jpg","yt-22.jpg"],"sh":["sh-03.jpg","sh-09.jpg","sh-15.jpg","sh-22.jpg"],"mix":true},{"slug":"style-photomontage","name":"Photomontage","desc":"Scissor-cut PD Navy photos slapped on a black diagonal, red wedges, snipped warhead NO","yt":["yt-03.jpg","yt-09.jpg","yt-15.jpg","yt-22.jpg"],"sh":["sh-03.jpg","sh-09.jpg","sh-15.jpg","sh-22.jpg"],"mix":true},{"slug":"style-splitflap","name":"Departure Board","desc":"One split-flap board: flap pixels draw the pictures, words search and land, one red NO card","yt":["yt-03.jpg","yt-09.jpg","yt-15.jpg","yt-22.jpg"],"sh":["sh-03.jpg","sh-09.jpg","sh-15.jpg","sh-22.jpg"],"mix":true},{"slug":"style-papercut","name":"Lace Papercut","desc":"White lace sheet cut by a blade against teal light, pieces drop out, amber light through NO","yt":["yt-03.jpg","yt-09.jpg","yt-15.jpg","yt-22.jpg"],"sh":["sh-03.jpg","sh-09.jpg","sh-15.jpg","sh-22.jpg"],"mix":true},{"slug":"style-isotype","name":"Pictogram Statistics","desc":"Counted pictogram charts: one symbol = one thing, units count in, empty slots, one red NO","yt":["yt-03.jpg","yt-09.jpg","yt-15.jpg","yt-22.jpg"],"sh":["sh-03.jpg","sh-09.jpg","sh-15.jpg","sh-22.jpg"],"mix":true},{"slug":"style-bronze","name":"Bronze Relief","desc":"Cast bronze frieze, cloth rubs polish raised forms bright, NO cut into a plate","yt":["yt-03.jpg","yt-09.jpg","yt-15.jpg","yt-22.jpg"],"sh":["sh-03.jpg","sh-09.jpg","sh-15.jpg","sh-22.jpg"],"mix":true},{"slug":"style-cave","name":"Ochre Rock","desc":"Finger-painted and mouth-blown earth pigments on daylit limestone, red ochre NO","yt":["yt-03.jpg","yt-09.jpg","yt-15.jpg","yt-22.jpg"],"sh":["sh-03.jpg","sh-09.jpg","sh-15.jpg","sh-22.jpg"],"mix":true},{"slug":"style-ballpoint","name":"Notebook Margin","desc":"Blue ballpoint scribble-hatch on a spiral school page, checkbox vote, red tick NO","yt":["yt-03.jpg","yt-09.jpg","yt-15.jpg","yt-22.jpg"],"sh":["sh-03.jpg","sh-09.jpg","sh-15.jpg","sh-22.jpg"],"mix":true},{"slug":"style-wireart","name":"Bent Wire","desc":"One steel wire bends from shape to shape off a plaster wall, copper wire NO","yt":["yt-03.jpg","yt-09.jpg","yt-15.jpg","yt-22.jpg"],"sh":["sh-03.jpg","sh-09.jpg","sh-15.jpg","sh-22.jpg"],"mix":true},{"slug":"style-fresco","name":"Fresco Wall","desc":"Lime plaster laid patch by patch, pounced charcoal dots, pigment brushed in, cinnabar NO","yt":["yt-03.jpg","yt-09.jpg","yt-15.jpg","yt-22.jpg"],"sh":["sh-03.jpg","sh-09.jpg","sh-15.jpg","sh-22.jpg"],"mix":true},{"slug":"style-neon","name":"Neon Tubes","desc":"Real glass tubes on a brick wall, unlit glass always there, relay click starts, one red NO","yt":["yt-03.jpg","yt-09.jpg","yt-15.jpg","yt-22.jpg"],"sh":["sh-03.jpg","sh-09.jpg","sh-15.jpg","sh-22.jpg"],"mix":true},{"slug":"style-playingcard","name":"Card Deck","desc":"Own court-card designs dealt on slate wool, flips and a tally, NO = the one card face down","yt":["yt-03.jpg","yt-09.jpg","yt-15.jpg","yt-22.jpg"],"sh":["sh-03.jpg","sh-09.jpg","sh-15.jpg","sh-22.jpg"],"mix":true},{"slug":"style-pointillism","name":"Dot Painting","desc":"Pure-pigment dabs pressed onto linen, macro pull-back resolves the picture, ultramarine NO","yt":["yt-03.jpg","yt-09.jpg","yt-15.jpg","yt-22.jpg"],"sh":["sh-03.jpg","sh-09.jpg","sh-15.jpg","sh-22.jpg"],"mix":true}];
+const $ = (s) => document.querySelector(s);
+const state = { i: -1, format: 'youtube', comp: null, tracks: [], t: 0, playing: false, t0: 0 };
+
+$('#grid').innerHTML = STYLES.map((s, i) => `<article class="card" id="c${i}"><h3><span class="num">${i + 1}</span>${s.name}</h3><p>${s.desc}</p>
+${s.yt.length ? `<div class="thumbs">${s.yt.slice(0, 4).map((f) => `<img loading="lazy" src="${s.slug}/${f}" data-i="${i}" data-t="${parseInt(f.replace(/\D+/g, '')) || 0}" alt="">`).join('')}</div>` : '<div class="missing">Still being built…</div>'}
+<div class="ctrl"><button data-watch="${i}">▶ Watch with sound</button></div></article>`).join('');
+$('#grid').addEventListener('click', (e) => {
+  const w = e.target.closest('[data-watch]'); const im = e.target.closest('img[data-i]');
+  if (w) load(+w.dataset.watch, 0, true);
+  if (im) load(+im.dataset.i, +im.dataset.t, false);
+});
+
+function stopAudio() { for (const tr of state.tracks) { tr.el.pause(); tr.el.src = ''; } state.tracks = []; }
+async function load(i, t = 0, autoplay = false) {
+  pause(); stopAudio();
+  state.i = i; state.t = t; const s = STYLES[i];
+  document.querySelectorAll('.card').forEach((c) => c.classList.toggle('cur', c.id === 'c' + i));
+  $('#title').textContent = `${i + 1}. ${s.name}`; $('#desc').textContent = s.desc;
+  const screen = $('#screen'); screen.className = 'screen ' + (state.format === 'shorts' ? 'sh' : 'yt');
+  screen.innerHTML = '<div class="hint">Loading…</div>';
+  const fr = document.createElement('iframe'); fr.src = `/onclack-styles/comp/${s.slug}/?format=${state.format}`; screen.appendChild(fr);
+  await new Promise((r) => fr.addEventListener('load', r, { once: true }));
+  for (let k = 0; k < 300 && !fr.contentWindow.__comp; k++) await new Promise((r) => setTimeout(r, 100));
+  const comp = fr.contentWindow.__comp; if (!comp) { screen.querySelector('.hint').textContent = 'Could not load. Try again, or use Chrome / Safari.'; return; }
+  state.comp = comp; const m = comp.meta;
+  fr.style.width = m.width + 'px'; fr.style.height = m.height + 'px';
+  const fit = () => { const k = screen.clientWidth / m.width; fr.style.transform = `scale(${k})`; screen.style.height = (m.height * k) + 'px'; };
+  if (state.format === 'shorts') { screen.style.width = Math.min(screen.parentElement.clientWidth, window.innerHeight * 0.72 * 9 / 16) + 'px'; }
+  fit(); window.onresize = fit;
+  screen.querySelector('.hint')?.remove();
+  $('#seek').max = m.duration;
+  state.tracks = (s.mix ? [{ url: `/onclack-styles/mix/${s.slug}.m4a`, start: 0, volume: 1 }] : []).map((a) => { const el = new Audio(a.url); el.preload = 'auto'; el.loop = !!a.loop; return { ...a, el }; });
+  comp.seek(state.t); showTime();
+  if (autoplay) play();
+}
+function gain(tr, t) {
+  const local = t - tr.start, len = tr.duration ?? Infinity; let g = tr.volume;
+  if (tr.fadeIn && local < tr.fadeIn) g *= Math.max(0, local / tr.fadeIn);
+  if (tr.fadeOut && isFinite(len) && local > len - tr.fadeOut) g *= Math.max(0, (len - local) / tr.fadeOut);
+  if (tr.role === 'ambience') g *= duckGain(t, state.comp.meta.duck);
+  return Math.min(1, Math.max(0, g));
+}
+function syncAudio(force) {
+  for (const tr of state.tracks) {
+    const local = state.t - tr.start, fl = isFinite(tr.el.duration) ? tr.el.duration : Infinity;
+    const len = tr.duration ?? (tr.loop ? Infinity : fl);
+    if (state.playing && local >= 0 && local < len) {
+      const pos = tr.loop && isFinite(fl) ? local % fl : local;
+      tr.el.volume = gain(tr, state.t);
+      if (tr.el.paused) { tr.el.currentTime = pos; tr.el.play().catch(() => {}); }
+      else if (force || Math.abs(tr.el.currentTime - pos) > 0.2) tr.el.currentTime = pos;
+    } else if (!tr.el.paused) tr.el.pause();
+  }
+}
+function tick() {
+  if (!state.playing) return;
+  state.t = (performance.now() - state.t0) / 1000;
+  const d = state.comp.meta.duration;
+  if (state.t >= d) { state.t = d; state.comp.seek(d); pause(); showTime(); return; }
+  state.comp.seek(state.t); syncAudio(false); showTime();
+  requestAnimationFrame(tick);
+}
+function play() { if (!state.comp) return; if (state.t >= state.comp.meta.duration - 0.05) state.t = 0; state.playing = true; state.t0 = performance.now() - state.t * 1000; $('#play').textContent = '❚❚ Pause'; syncAudio(true); requestAnimationFrame(tick); }
+function pause() { state.playing = false; $('#play').textContent = '▶ Play'; for (const tr of state.tracks) tr.el.pause(); }
+function showTime() { $('#seek').value = state.t; $('#time').textContent = `${state.t.toFixed(1)} / ${(state.comp?.meta.duration ?? 0).toFixed(1)} s`; }
+$('#play').onclick = () => (state.playing ? pause() : play());
+$('#restart').onclick = () => { state.t = 0; if (state.playing) { state.t0 = performance.now(); syncAudio(true); } else { state.comp?.seek(0); showTime(); } };
+$('#seek').oninput = (e) => { state.t = +e.target.value; state.comp?.seek(state.t); if (state.playing) { state.t0 = performance.now() - state.t * 1000; syncAudio(true); } showTime(); };
+document.querySelectorAll('[data-f]').forEach((b) => b.onclick = () => { state.format = b.dataset.f; document.querySelectorAll('[data-f]').forEach((x) => x.classList.toggle('on', x === b)); if (state.i >= 0) load(state.i, state.t, state.playing); });
+$('#prev').onclick = () => load((state.i - 1 + STYLES.length) % STYLES.length, 0, true);
+$('#next').onclick = () => load((state.i + 1) % STYLES.length, 0, true);
+document.addEventListener('keydown', (e) => { if (e.code === 'Space') { e.preventDefault(); state.playing ? pause() : play(); } });
+</script></body></html>

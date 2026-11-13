@@ -1,0 +1,3 @@
+/* Spray Stencil style test — tokens live in shared/stencil.js (C). */
+#stage { background: #8d8a84; }
+#stage .scene { font-kerning: normal; font-synthesis: none; }

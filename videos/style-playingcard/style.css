@@ -1,0 +1,4 @@
+/* Card Deck — tokens live in shared/faces.js */
+@font-face { font-family: 'Alfa Slab One'; font-weight: 400; font-display: block; src: url('assets/fonts/alfa-slab-one-latin-400-normal.woff2') format('woff2'); }
+#stage { background: #3A4250; }
+#stage .scene { font-kerning: normal; text-rendering: geometricPrecision; }

@@ -1,0 +1,3 @@
+/* Scratchboard style test — palette tokens only: board #0E0E0E · scratch #EDEAE2 · cyan #5FA3B5 · red #C42E22 (NO only). */
+#stage { background: #0E0E0E; }
+#stage .scene { background: #0E0E0E; font-kerning: normal; text-rendering: geometricPrecision; -webkit-font-smoothing: antialiased; }

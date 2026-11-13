@@ -1,0 +1,6 @@
+/* Folded Paper style test — palette tokens live in shared/fold.js (PAL). Font: Jost (OFL), local in assets/fonts. */
+@font-face { font-family: 'Jost'; font-weight: 500; font-display: block; src: url('assets/fonts/jost-latin-500-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Jost'; font-weight: 700; font-display: block; src: url('assets/fonts/jost-latin-700-normal.woff2') format('woff2'); }
+#stage { background: #706D68; }
+#stage .scene { overflow: hidden; font-kerning: normal; font-synthesis: none; text-rendering: geometricPrecision; }
+#stage .scene text { font-variant-numeric: lining-nums; }

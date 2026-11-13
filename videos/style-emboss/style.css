@@ -1,0 +1,3 @@
+/* Blind Emboss style test — paper + one ink. */
+#stage { background: #EFEBE2; }
+#stage .scene { font-kerning: normal; font-synthesis: none; text-rendering: geometricPrecision; }

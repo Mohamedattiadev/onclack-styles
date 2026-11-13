@@ -1,0 +1,3 @@
+/* Leaded Glass style test. */
+#stage { background: #0b0c0e; }
+#stage .scene { font-kerning: normal; text-rendering: geometricPrecision; }

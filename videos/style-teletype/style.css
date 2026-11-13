@@ -1,0 +1,3 @@
+/* Teletype Tape style test */
+#stage { background: #1E1A21; }
+#stage .scene { font-kerning: none; text-rendering: geometricPrecision; -webkit-font-smoothing: antialiased; }

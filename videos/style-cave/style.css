@@ -1,0 +1,4 @@
+/* Ochre Rock style test — palette tokens live in shared/paint.js (PIG). */
+#stage { background: #8e8270; }
+#stage .scene { overflow: hidden; }
+#stage .scene img { display: block; user-select: none; }

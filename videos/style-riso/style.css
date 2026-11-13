@@ -1,0 +1,3 @@
+/* Riso Zine style test — palette lives in shared/riso.js (INK, PAPER, DESK). */
+#stage { background: #25221E; }
+#stage .scene canvas { image-rendering: auto; }

@@ -1,0 +1,3 @@
+/* Vector CRT style test — palette tokens live in shared/tube.js (PH). */
+#stage { background: #151614; }
+#stage .scene { overflow: hidden; }

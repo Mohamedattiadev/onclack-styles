@@ -1,0 +1,3 @@
+/* Broadsheet style test — palette tokens only. */
+#stage { background: #ECE6D6; }
+#stage .scene { font-kerning: normal; text-rendering: geometricPrecision; -webkit-font-smoothing: antialiased; }

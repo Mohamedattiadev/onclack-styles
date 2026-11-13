@@ -1,0 +1,4 @@
+/* Notebook Margin — tokens live in shared/page.js */
+@font-face { font-family: 'Reenie Beanie'; font-weight: 400; font-display: block; src: url('assets/fonts/reenie-beanie-latin-400-normal.woff2') format('woff2'); }
+#stage { background: #2B2724; }
+#stage .scene { font-kerning: normal; text-rendering: geometricPrecision; }
