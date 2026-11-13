@@ -1,0 +1,3 @@
+/* Giant Foreground — one flat colour world. Tokens live in shared/toy.js (C). */
+#stage { background: #127463; }
+#stage .scene { overflow: hidden; font-kerning: normal; text-rendering: geometricPrecision; -webkit-font-smoothing: antialiased; }
